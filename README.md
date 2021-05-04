@@ -1,2 +1,2 @@
 # Auto_ML_app
-This application trains Classification ML algorithms on custom datasets and classifies test set examples
+This application trains Regression ML algorithms on custom datasets and predicts test set examples
