@@ -29,13 +29,13 @@ params = dict()
 with st.sidebar.header('2. Set Parameters'):
     params['split_size'] = st.sidebar.slider('Data split ratio (% for Training Set)', 10, 90, 80, 5)
 
-with st.sidebar.subheader('2.1. Learning Parameters'):
-    params['parameter_n_estimators'] = st.sidebar.slider('Number of estimators (n_estimators)', 0, 1000, 100, 100)
+with st.sidebar.subheader('Learning Parameters'):
+    params['parameter_n_estimators'] = st.sidebar.slider('Number of estimators (n_estimators) in forest', 0, 1000, 100, 100)
     params['parameter_max_features'] = st.sidebar.select_slider('Max features (max_features)', options=['auto', 'sqrt', 'log2'])
     params['parameter_min_samples_split'] = st.sidebar.slider('Minimum number of samples required to split an internal node (min_samples_split)', 1, 10, 2, 1)
     params['parameter_min_samples_leaf'] = st.sidebar.slider('Minimum number of samples required to be at a leaf node (min_samples_leaf)', 1, 10, 2, 1)
 
-with st.sidebar.subheader('2.2. General Parameters'):
+with st.sidebar.subheader('General Parameters'):
     params['parameter_random_state'] = st.sidebar.slider('Seed number (random_state)', 0, 1000, 42, 1)
     params['parameter_criterion'] = st.sidebar.select_slider('Performance measure (criterion)', options=['mse', 'mae'])
     params['parameter_bootstrap'] = st.sidebar.select_slider('Bootstrap samples when building trees (bootstrap)', options=[True, False])
@@ -45,8 +45,8 @@ with st.sidebar.subheader('2.2. General Parameters'):
 
 def show_data_params(model_dict, df):
     st.subheader('1 Data')
-    st.markdown('**1 a) Glimpse of dataset**')
-    st.write(df)
+    st.markdown('**1 a) Dataset top 10 rows**')
+    st.write(df.head(10))
     st.markdown('**1 b) Data split to train and validation set**')
     st.write('Training set data shape')
     st.info(model_dict['data_params']['train_shape'])
@@ -66,14 +66,14 @@ def show_model_metrics(model_dict):
     st.write('Coefficient of determination ($R^2$):')
     st.info(model_dict['metrics']['train_R2'])
     
-    st.write('Mean Squared Error:')
+    st.write('Mean Squared Error or Mean Absolute Error (based on param selected in sidebar):')
     st.info(model_dict['metrics']['train_MSE'])
 
     st.markdown('**2 b) Test set metrics**')
     st.write('Coefficient of determination ($R^2$):')
     st.info(model_dict['metrics']['test_R2'])
 
-    st.write('Mean Squared Error:')
+    st.write('Mean Squared Error or Mean Absolute Error (based on param selected in sidebar):')
     st.info(model_dict['metrics']['train_MSE'])
 
     st.subheader('3. Model Parameters')
