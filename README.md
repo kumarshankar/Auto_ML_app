@@ -4,8 +4,11 @@ This application trains  ML algorithms on custom datasets and returns model metr
 ## [Heroku live app](https://shankar-regressor.herokuapp.com/)
 
 
-# Motivation
+## Motivation
 Having a GUI to see model performance as model parameters are tuned helps identify the optimal model for the dataset. This can be used for downstream tasks like prediction
 
-# References
+## Future scope of work
+Returning the predictions obtained from customized model after uploading new unseen dataset 
+
+## References
 This work is heavily inspired by the data professor streamlit tutorials on [youtube](https://www.youtube.com/playlist?list=PLtqF5YXg7GLmCvTswG32NqQypOuYkPRUE)
